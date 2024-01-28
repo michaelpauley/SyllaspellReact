@@ -1,0 +1,298 @@
+{
+    "01/29/2024": {
+        "puzzle_number": 2,
+        "game_syllables": [
+            {
+                "un": 4
+            },
+            {
+                "blink": 3
+            },
+            {
+                "ing": 6
+            },
+            {
+                "zon": 4
+            },
+            {
+                "al": 8
+            },
+            {
+                "ly": 7
+            },
+            {
+                "re": 9
+            },
+            {
+                "in": 2
+            },
+            {
+                "fuse": 4
+            },
+            {
+                "mu": 1
+            },
+            {
+                "ci": 2
+            },
+            {
+                "lage": 1
+            }
+        ],
+        "answers": [
+            {
+                "answer": "blinking",
+                "syllable_breakdown": "blink-ing",
+                "syllable_count": 2
+            },
+            {
+                "answer": "blink",
+                "syllable_breakdown": "blink",
+                "syllable_count": 1
+            },
+            {
+                "answer": "ally",
+                "syllable_breakdown": "al-ly",
+                "syllable_count": 2
+            },
+            {
+                "answer": "rely",
+                "syllable_breakdown": "re-ly",
+                "syllable_count": 2
+            },
+            {
+                "answer": "real",
+                "syllable_breakdown": "re-al",
+                "syllable_count": 2
+            },
+            {
+                "answer": "zonally",
+                "syllable_breakdown": "zon-al-ly",
+                "syllable_count": 3
+            },
+            {
+                "answer": "reinfuse",
+                "syllable_breakdown": "re-in-fuse",
+                "syllable_count": 3
+            },
+            {
+                "answer": "mucilage",
+                "syllable_breakdown": "mu-ci-lage",
+                "syllable_count": 3
+            },
+            {
+                "answer": "unblinking",
+                "syllable_breakdown": "un-blink-ing",
+                "syllable_count": 3
+            },
+            {
+                "answer": "uncial",
+                "syllable_breakdown": "un-ci-al",
+                "syllable_count": 3
+            },
+            {
+                "answer": "refuse",
+                "syllable_breakdown": "re-fuse",
+                "syllable_count": 2
+            },
+            {
+                "answer": "relying",
+                "syllable_breakdown": "re-ly-ing",
+                "syllable_count": 3
+            },
+            {
+                "answer": "zoning",
+                "syllable_breakdown": "zon-ing",
+                "syllable_count": 2
+            },
+            {
+                "answer": "infuse",
+                "syllable_breakdown": "in-fuse",
+                "syllable_count": 2
+            },
+            {
+                "answer": "really",
+                "syllable_breakdown": "re-al-ly",
+                "syllable_count": 3
+            },
+            {
+                "answer": "rezoning",
+                "syllable_breakdown": "re-zon-ing",
+                "syllable_count": 3
+            },
+            {
+                "answer": "unreally",
+                "syllable_breakdown": "un-re-al-ly",
+                "syllable_count": 4
+            },
+            {
+                "answer": "zonal",
+                "syllable_breakdown": "zon-al",
+                "syllable_count": 2
+            },
+            {
+                "answer": "lying",
+                "syllable_breakdown": "ly-ing",
+                "syllable_count": 2
+            },
+            {
+                "answer": "fuse",
+                "syllable_breakdown": "fuse",
+                "syllable_count": 1
+            },
+            {
+                "answer": "unreal",
+                "syllable_breakdown": "un-re-al",
+                "syllable_count": 3
+            }
+        ]
+    },
+    "01/28/2024": {
+        "puzzle_number": 1,
+        "game_syllables": [
+            {
+                "un": 4
+            },
+            {
+                "blink": 3
+            },
+            {
+                "ing": 6
+            },
+            {
+                "zon": 4
+            },
+            {
+                "al": 8
+            },
+            {
+                "ly": 7
+            },
+            {
+                "re": 9
+            },
+            {
+                "in": 2
+            },
+            {
+                "fuse": 4
+            },
+            {
+                "mu": 1
+            },
+            {
+                "ci": 2
+            },
+            {
+                "lage": 1
+            }
+        ],
+        "answers": [
+            {
+                "answer": "blinking",
+                "syllable_breakdown": "blink-ing",
+                "syllable_count": 2
+            },
+            {
+                "answer": "blink",
+                "syllable_breakdown": "blink",
+                "syllable_count": 1
+            },
+            {
+                "answer": "ally",
+                "syllable_breakdown": "al-ly",
+                "syllable_count": 2
+            },
+            {
+                "answer": "rely",
+                "syllable_breakdown": "re-ly",
+                "syllable_count": 2
+            },
+            {
+                "answer": "real",
+                "syllable_breakdown": "re-al",
+                "syllable_count": 2
+            },
+            {
+                "answer": "zonally",
+                "syllable_breakdown": "zon-al-ly",
+                "syllable_count": 3
+            },
+            {
+                "answer": "reinfuse",
+                "syllable_breakdown": "re-in-fuse",
+                "syllable_count": 3
+            },
+            {
+                "answer": "mucilage",
+                "syllable_breakdown": "mu-ci-lage",
+                "syllable_count": 3
+            },
+            {
+                "answer": "unblinking",
+                "syllable_breakdown": "un-blink-ing",
+                "syllable_count": 3
+            },
+            {
+                "answer": "uncial",
+                "syllable_breakdown": "un-ci-al",
+                "syllable_count": 3
+            },
+            {
+                "answer": "refuse",
+                "syllable_breakdown": "re-fuse",
+                "syllable_count": 2
+            },
+            {
+                "answer": "relying",
+                "syllable_breakdown": "re-ly-ing",
+                "syllable_count": 3
+            },
+            {
+                "answer": "zoning",
+                "syllable_breakdown": "zon-ing",
+                "syllable_count": 2
+            },
+            {
+                "answer": "infuse",
+                "syllable_breakdown": "in-fuse",
+                "syllable_count": 2
+            },
+            {
+                "answer": "really",
+                "syllable_breakdown": "re-al-ly",
+                "syllable_count": 3
+            },
+            {
+                "answer": "rezoning",
+                "syllable_breakdown": "re-zon-ing",
+                "syllable_count": 3
+            },
+            {
+                "answer": "unreally",
+                "syllable_breakdown": "un-re-al-ly",
+                "syllable_count": 4
+            },
+            {
+                "answer": "zonal",
+                "syllable_breakdown": "zon-al",
+                "syllable_count": 2
+            },
+            {
+                "answer": "lying",
+                "syllable_breakdown": "ly-ing",
+                "syllable_count": 2
+            },
+            {
+                "answer": "fuse",
+                "syllable_breakdown": "fuse",
+                "syllable_count": 1
+            },
+            {
+                "answer": "unreal",
+                "syllable_breakdown": "un-re-al",
+                "syllable_count": 3
+            }
+        ]
+    }
+}

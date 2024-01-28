@@ -24,9 +24,9 @@ if(Platform.OS === 'ios') {if(aspectRatio>1.6) {styles = phoneStyles;}else {styl
 
 function WelcomeScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <View style={commonStyles.header}>
-        <Text style={commonStyles.headerText}>LETTERSET</Text>
+        <Text style={commonStyles.headerText}>SYLLASPELL</Text>
       </View>
       <View style={{alignItems: 'center', justifyContent: 'center',paddingTop:50 }}>
       <Image source={require('../assets/logo.png')} />

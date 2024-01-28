@@ -1,9 +1,5 @@
 export default  {
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        color:'#f4f4f4',
-  },
+
 buttonContainer: {
   alignItems: 'center',
   justifyContent: 'center',

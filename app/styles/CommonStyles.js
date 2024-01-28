@@ -1,4 +1,9 @@
 export default {
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        color:'#f4f4f4',
+  },
     header: {
         flexDirection: 'row',
         justifyContent: 'center',
