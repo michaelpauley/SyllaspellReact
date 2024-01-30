@@ -27,10 +27,20 @@ function PuzzleScreen({ navigation }) {
     const [totalCount, setTotalCount] = useState(0);
 
 
-
-
+    // EFFECTS
     useEffect(() => {
-        const dataForToday = devData['01/28/2024'];
+        const arizonaTime = new Date().toLocaleString("en-US", {timeZone: "America/Phoenix"});
+        const dateParts = arizonaTime.split(',')[0].split('/');
+        
+        // Ensure month and day are zero-padded
+        const month = dateParts[0].padStart(2, '0');
+        const day = dateParts[1].padStart(2, '0');
+        const year = dateParts[2];
+        
+        const formattedDate = `${month}/${day}/${year}`;
+        console.log(formattedDate);
+        const dataForToday = devData[formattedDate];
+        
         if (dataForToday) {
           setPuzzleData(dataForToday);
         }
@@ -46,6 +56,11 @@ function PuzzleScreen({ navigation }) {
         }
       }, [puzzleData]);
 
+
+
+
+
+    //   LOADING DATA SCREEN
     if (!puzzleData) {
         return (
             <SafeAreaView>
