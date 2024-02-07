@@ -26,40 +26,33 @@ function PuzzleScreen({ navigation }) {
     const [puzzleData, setPuzzleData] = useState(null);
     const [totalCount, setTotalCount] = useState(0);
 
-
-    // EFFECTS
     useEffect(() => {
-        const arizonaTime = new Date().toLocaleString("en-US", {timeZone: "America/Phoenix"});
-        const dateParts = arizonaTime.split(',')[0].split('/');
-        
-        // Ensure month and day are zero-padded
-        const month = dateParts[0].padStart(2, '0');
-        const day = dateParts[1].padStart(2, '0');
-        const year = dateParts[2];
-        
-        const formattedDate = `${month}/${day}/${year}`;
-        console.log(formattedDate);
-        const dataForToday = devData[formattedDate];
-        
-        if (dataForToday) {
-          setPuzzleData(dataForToday);
+      const fetchGameData = async () => {
+        try {
+          const response = await fetch('http://192.168.0.100:8000/api/game_data');
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          const json = await response.json();
+          setPuzzleData(json);
+          console.log(json);
+        } catch (error) {
+          console.error('Error fetching game data:', error);
         }
-      }, []);
-
-      useEffect(() => {
-        if (puzzleData) {
-          const total = puzzleData.game_syllables.reduce((sum, item) => {
-            const count = Object.values(item)[0];
-            return sum + count;
-          }, 0);
-          setTotalCount(total);
-        }
-      }, [puzzleData]);
-
-
-
-
-
+      };
+  
+      fetchGameData();
+    }, []); // The empty array ensures this effect runs only once after the initial render
+  
+    useEffect(() => {
+      if (puzzleData) {
+        const total = puzzleData.game_syllables.reduce((sum, item) => {
+          const count = Object.values(item)[0];
+          return sum + count;
+        }, 0);
+        setTotalCount(total);
+      }
+    }, [puzzleData]); 
     //   LOADING DATA SCREEN
     if (!puzzleData) {
         return (
