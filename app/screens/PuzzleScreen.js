@@ -13,7 +13,6 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import phoneStyles from '../styles/PuzzlePhoneStyles';
 import commonStyles from '../styles/CommonStyles';
-import devData from '../data/dev_data.json';
 
 
 // SET UP STYLES
@@ -24,7 +23,6 @@ if(Platform.OS === 'ios') {if(aspectRatio>1.6) {styles = phoneStyles;}else {styl
 
 function PuzzleScreen({ navigation }) {
     const [puzzleData, setPuzzleData] = useState(null);
-    const [totalCount, setTotalCount] = useState(0);
 
     useEffect(() => {
       const fetchGameData = async () => {
@@ -42,17 +40,8 @@ function PuzzleScreen({ navigation }) {
       };
   
       fetchGameData();
-    }, []); // The empty array ensures this effect runs only once after the initial render
+    }, []); 
   
-    useEffect(() => {
-      if (puzzleData) {
-        const total = puzzleData.game_syllables.reduce((sum, item) => {
-          const count = Object.values(item)[0];
-          return sum + count;
-        }, 0);
-        setTotalCount(total);
-      }
-    }, [puzzleData]); 
     //   LOADING DATA SCREEN
     if (!puzzleData) {
         return (
@@ -61,6 +50,8 @@ function PuzzleScreen({ navigation }) {
             </SafeAreaView>
         );
     }
+
+
 
     return (
         <SafeAreaView style={commonStyles.container}>
@@ -72,7 +63,7 @@ function PuzzleScreen({ navigation }) {
           {/* Progress Bar */}
           <View style={styles.progressBarContainer}>
         <View style={styles.progressBar} />
-        <Text style={styles.progressText}>Syllables: 0/{totalCount}</Text>
+        <Text style={styles.progressText}>Syllables: 0/{puzzleData.total_syllables}</Text>
         </View>
     
           {/* Dropdown Button */}
@@ -95,19 +86,16 @@ function PuzzleScreen({ navigation }) {
     
           {/* Syllable Buttons */}
           <ScrollView contentContainerStyle={styles.syllablesContainer}>
-            {puzzleData.game_syllables.map((syllableObj, index) => {
-              const syllable = Object.keys(syllableObj)[0];
-              const count = syllableObj[syllable];
-              return (
-                <TouchableOpacity key={index} style={styles.syllableButton}>
-                  <Text style={styles.syllableText}>{syllable}</Text>
-                  <View style={styles.syllableCountContainer}>
-                    <Text style={styles.syllableCount}>{count}</Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+            {Object.entries(puzzleData.syllables_count).map(([syllable, count], index) => (
+              <TouchableOpacity key={index} style={styles.syllableButton}>
+                <Text style={styles.syllableText}>{syllable}</Text>
+                <View style={styles.syllableCountContainer}>
+                  <Text style={styles.syllableCount}>{count}</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
           </ScrollView>
+
     
           {/* Control Buttons */}
           <View style={styles.controlButtonsContainer}>
