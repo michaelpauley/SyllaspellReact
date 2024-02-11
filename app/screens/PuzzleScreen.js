@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react';
-
+import { View } from 'react-native';
 // Components
 import Loading from '../components/Loading';
 import Header from '../components/Header';
@@ -13,7 +13,11 @@ import ControlButtons from '../components/ControlButtons';
 
 // Functions
 import fetchGameData from '../utilities/apiCalls';
-import handleDropdownPress from '../utilities/buttonActions';
+import {
+  handleDropdownPress,
+  handleShufflePress,
+  handleAlphabetizePress
+} from '../utilities/buttonActions';
 
 
 function PuzzleScreen({ navigation }) {
@@ -44,9 +48,10 @@ function PuzzleScreen({ navigation }) {
           <DropdownButton onPress={handleDropdownPress} />
           <SyllableSpaces count={5} />
           <GameMessageContainer message={''} />
-          <SyllableButtons syllablesData={puzzleData.syllables_count} />
-
-          <ControlButtons buttons={controlButtonConfigs} />
+          <View style={{ width: '100%', alignItems: 'center' }}>
+            <SyllableButtons syllablesData={puzzleData.syllables_count} />
+            <ControlButtons buttons={controlButtonConfigs} />
+          </View>
         </SafeArea>
       );
     }
