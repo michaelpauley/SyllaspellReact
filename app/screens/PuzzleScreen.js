@@ -1,32 +1,34 @@
 import React, {useState,useEffect} from 'react';
 import {
-  Text,
-  TouchableOpacity,
-  View,
   Dimensions,
   Platform,
-  ScrollView
 } from 'react-native';
+
+// Components
 import Loading from '../components/Loading';
 import Header from '../components/Header';
 import SafeArea from '../components/SafeArea';
 import ProgressBar from '../components/ProgressBar';
 import DropdownButton from '../components/DropdownButton';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import phoneStyles from '../styles/PuzzlePhoneStyles';
+import SyllableSpaces from '../components/SyllableSpaces';
+import GameMessageContainer from '../components/GameMessageContainer';
+import SyllableButtons from '../components/SyllableButtons';
+import ControlButtons from '../components/ControlButtons';
 
+// Functions
 import fetchGameData from '../utilities/apiCalls';
 import handleDropdownPress from '../utilities/buttonActions';
 
 
-// SET UP STYLES
-const {height, width} = Dimensions.get('window'); 
-const aspectRatio = height/width;
-let styles;
-if(Platform.OS === 'ios') {if(aspectRatio>1.6) {styles = phoneStyles;}else {styles = tabletStyles;}} else {styles = phoneStyles;}
-
 function PuzzleScreen({ navigation }) {
     const [puzzleData, setPuzzleData] = useState(null);
+
+    const controlButtonConfigs = [
+      { iconName: 'close', color: '#e57373', onPress: () => console.log('Close pressed') },
+      { iconName: 'sort-alphabetical-variant', color: '#64b5f6', onPress: () => console.log('Sort pressed') },
+      { iconName: 'shuffle', color: '#ffb74d', onPress: () => console.log('Shuffle pressed') },
+      { iconName: 'arrow-right', color: '#81c784', onPress: () => console.log('Next pressed') },
+    ];    
 
     useEffect(() => {
       const fetchData = async () => {
@@ -40,59 +42,15 @@ function PuzzleScreen({ navigation }) {
 
     return (
         <SafeArea>
-          
-          <Header
-            title={`Daily: ${puzzleData.puzzle_number}`} 
-            showBackButton={true}
-            onBackPress={() => navigation.goBack()}
-            showMenu={true}
-            onMenuPress={() => navigation.openDrawer()} 
-          />
-
+          <Header title={`Daily: ${puzzleData.puzzle_number}`} showBackButton={true} onBackPress={() => navigation.goBack()} 
+          showMenu={true} onMenuPress={() => navigation.openDrawer()} />
           <ProgressBar currentSyllables={0} totalSyllables={puzzleData.total_syllables} />
-
           <DropdownButton onPress={handleDropdownPress} />
-    
-          {/* Syllable Spaces */}
-          <View style={styles.syllableSpacesContainer}>
-            {[...Array(5)].map((_, index) => (
-                <View key={index} style={styles.syllableSpace} />
-            ))}
-            </View>
-    
-          {/* Game Message Container */}
-          <View style={styles.gameMessageContainer}>
-            {/* Display game messages here */}
-          </View>
-    
-          {/* Syllable Buttons */}
-          <ScrollView contentContainerStyle={styles.syllablesContainer}>
-            {Object.entries(puzzleData.syllables_count).map(([syllable, count], index) => (
-              <TouchableOpacity key={index} style={styles.syllableButton}>
-                <Text style={styles.syllableText}>{syllable}</Text>
-                <View style={styles.syllableCountContainer}>
-                  <Text style={styles.syllableCount}>{count}</Text>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </ScrollView>
+          <SyllableSpaces count={5} />
+          <GameMessageContainer message={''} />
+          <SyllableButtons syllablesData={puzzleData.syllables_count} />
 
-    
-          {/* Control Buttons */}
-          <View style={styles.controlButtonsContainer}>
-            <TouchableOpacity style={styles.controlButton}>
-              <Icon name="close" size={24} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.controlButton}>
-              <Icon name="sort-alphabetical-variant" size={24} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.controlButton}>
-              <Icon name="shuffle" size={24} />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.controlButton}>
-              <Icon name="arrow-right" size={24} />
-            </TouchableOpacity>
-          </View>
+          <ControlButtons buttons={controlButtonConfigs} />
         </SafeArea>
       );
     }
