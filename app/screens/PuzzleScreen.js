@@ -1,8 +1,4 @@
 import React, {useState,useEffect} from 'react';
-import {
-  Dimensions,
-  Platform,
-} from 'react-native';
 
 // Components
 import Loading from '../components/Loading';
