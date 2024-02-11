@@ -1,33 +1,24 @@
 import React from 'react';
 import {
-  SafeAreaView,
   Image,
   Text,
   TouchableOpacity,
   View,
-  Dimensions,
-  Platform,
-  Animated,
 } from 'react-native';
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import phoneStyles from '../styles/welcomePhoneStyles';
-import commonStyles from '../styles/CommonStyles';
-
-// SET UP STYLES
-const {height, width} = Dimensions.get('window'); 
-const aspectRatio = height/width;
-let styles;
-if(Platform.OS === 'ios') {if(aspectRatio>1.6) {styles = phoneStyles;}else {styles = tabletStyles;}} else {styles = phoneStyles;}
-
-
-
+import styles from '../styles/welcomePhoneStyles';
+import Header from '../components/Header';
+import SafeArea from '../components/SafeArea';
 
 function WelcomeScreen({ navigation }) {
   return (
-    <SafeAreaView style={commonStyles.container}>
-      <View style={commonStyles.header}>
-        <Text style={commonStyles.headerText}>SYLLASPELL</Text>
-      </View>
+    <SafeArea>
+      <Header
+        title=""
+        showBackButton={false}
+        onBackPress={() => navigation.goBack()}
+        showMenu={false}
+        onMenuPress={() => navigation.openDrawer()} 
+      />
       <View style={{alignItems: 'center', justifyContent: 'center',paddingTop:50 }}>
       <Image source={require('../assets/logo.png')} />
       </View>
@@ -43,14 +34,8 @@ function WelcomeScreen({ navigation }) {
         >
           <Text style={[styles.buttonText, styles.buttonTextSize, styles.buttonTextCenter]}>DAILY</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity
-          style={[styles.button, styles.buttonSize]}
-          onPress={() => navigation.navigate('Web')}
-        >
-          <Text style={[styles.buttonText, styles.buttonTextSize, styles.buttonTextCenter]}>ARCHIVE</Text>
-        </TouchableOpacity> */}
       </View>
-    </SafeAreaView>
+    </SafeArea>
   );
 }
 
