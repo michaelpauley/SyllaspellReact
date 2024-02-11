@@ -1,40 +1,5 @@
 export default  {
-    progressBarContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#e0e0e0',
-        borderRadius: 10,
-        overflow: 'hidden',
-        marginBottom: 20,
-        width: '90%',
-        alignSelf: 'center',
-        paddingVertical: 15, // Add padding to make the container taller
-      },
-      progressBar: {
-        height: '100%',
-        backgroundColor: 'blue',
-        width: '0%', // This will be dynamic as the progress changes
-      },
-      progressText: {
-        position: 'absolute',
-        right: 15,
-        color: '#000',
-      },
-      dropdownButton: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderWidth: 1, 
-        borderColor: '#d0d0d0', 
-        borderRadius: 10,
-        paddingVertical: 15, 
-        width: '90%', 
-        alignSelf: 'center',
-        marginBottom: 20, 
-        backgroundColor: '#ffffff', 
-        paddingHorizontal:10,
-      },
+
       syllableSpacesContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',

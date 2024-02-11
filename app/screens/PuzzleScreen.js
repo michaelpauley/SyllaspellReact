@@ -1,18 +1,22 @@
 import React, {useState,useEffect} from 'react';
 import {
-  SafeAreaView,
-  Image,
   Text,
   TouchableOpacity,
   View,
   Dimensions,
   Platform,
-  Animated,
   ScrollView
 } from 'react-native';
+import Loading from '../components/Loading';
+import Header from '../components/Header';
+import SafeArea from '../components/SafeArea';
+import ProgressBar from '../components/ProgressBar';
+import DropdownButton from '../components/DropdownButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import phoneStyles from '../styles/PuzzlePhoneStyles';
-import commonStyles from '../styles/CommonStyles';
+
+import fetchGameData from '../utilities/apiCalls';
+import handleDropdownPress from '../utilities/buttonActions';
 
 
 // SET UP STYLES
@@ -25,52 +29,29 @@ function PuzzleScreen({ navigation }) {
     const [puzzleData, setPuzzleData] = useState(null);
 
     useEffect(() => {
-      const fetchGameData = async () => {
-        try {
-          const response = await fetch('http://192.168.0.100:8000/api/game_data');
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const json = await response.json();
-          setPuzzleData(json);
-          console.log(json);
-        } catch (error) {
-          console.error('Error fetching game data:', error);
-        }
+      const fetchData = async () => {
+        const data = await fetchGameData('http://192.168.0.100:8000/api/game_data');
+        setPuzzleData(data);
       };
-  
-      fetchGameData();
+      fetchData();
     }, []); 
-  
-    //   LOADING DATA SCREEN
-    if (!puzzleData) {
-        return (
-            <SafeAreaView>
-                <Text>Loading puzzle...</Text>
-            </SafeAreaView>
-        );
-    }
 
-
+    if (!puzzleData) {return (<Loading/>);}
 
     return (
-        <SafeAreaView style={commonStyles.container}>
-          {/* Header with Puzzle Number */}
-          <View style={commonStyles.header}>
-        <Text style={commonStyles.headerText}>Daily: {puzzleData.puzzle_number}</Text>
-        </View>
-    
-          {/* Progress Bar */}
-          <View style={styles.progressBarContainer}>
-        <View style={styles.progressBar} />
-        <Text style={styles.progressText}>Syllables: 0/{puzzleData.total_syllables}</Text>
-        </View>
-    
-          {/* Dropdown Button */}
-          <TouchableOpacity style={styles.dropdownButton}>
-            <Text>Game stats...</Text>
-            <Icon name="chevron-left" size={24} />
-          </TouchableOpacity>
+        <SafeArea>
+          
+          <Header
+            title={`Daily: ${puzzleData.puzzle_number}`} 
+            showBackButton={true}
+            onBackPress={() => navigation.goBack()}
+            showMenu={true}
+            onMenuPress={() => navigation.openDrawer()} 
+          />
+
+          <ProgressBar currentSyllables={0} totalSyllables={puzzleData.total_syllables} />
+
+          <DropdownButton onPress={handleDropdownPress} />
     
           {/* Syllable Spaces */}
           <View style={styles.syllableSpacesContainer}>
@@ -112,7 +93,7 @@ function PuzzleScreen({ navigation }) {
               <Icon name="arrow-right" size={24} />
             </TouchableOpacity>
           </View>
-        </SafeAreaView>
+        </SafeArea>
       );
     }
     
